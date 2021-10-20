@@ -1,0 +1,7 @@
+.form-control{
+    border: none;
+    border-bottom: 1px solid rgb(107, 64, 107);
+    
+    box-shadow: none;
+    border-radius: 0px;
+}

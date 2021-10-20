@@ -1,0 +1,27 @@
+<table class="table text-center mx-auto mt-5">
+    <thead>
+        <th>productname</th>
+        <th>model</th>
+        <th>price</th>
+        <th>product</th>
+        <th>Amount</th>
+    </thead>
+    <tr *ngFor=" let product of products" class="mb-2">
+        <td>{{product.productname}}</td>
+        <td>{{product.model}}</td>
+        <td>{{product.price}}</td>
+        <td><img src={{product.productImage}} width="100px" alt="image">
+            <button class="btn btn-sm  bg-success " (click)="increaseCount(product)"><i class="fas fa-plus-square"></i></button>   {{product.count}}
+            <button class="btn btn-sm bg-danger" (click)="decreaseCount(product)" >  <i class="fas fa-minus-square"></i></button>
+        </td>
+        <td >{{total(product.count,product.price)}}</td>
+            
+        
+        <!-- <button class=" delete_product btn btn-danger " (click)="onProductdeletefromCart(product)"><i class="far fa-trash-alt"> Delete</i></button> -->
+    </tr>
+    
+
+</table>
+<hr>
+<div class="text-center">Total Sum:  {{totalsum(products)}}</div><br>
+<div class="text-center"><button class="btn btn-primary">pay</button></div>
