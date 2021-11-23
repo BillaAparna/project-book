@@ -12,6 +12,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component'
 import { AuthorizationService } from './authorization.service';
 import { SharedModule } from './shared/shared.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     UserProfileComponent,
 
     PagenotfoundComponent,
+     ContactUsComponent,
+    
   
   ],
   imports: [

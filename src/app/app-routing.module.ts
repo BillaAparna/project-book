@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './admin.guard';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MycartComponent } from './mycart/mycart.component';
@@ -18,14 +19,14 @@ const routes: Routes = [
     {path:'viewproducts',component:ViewproductsComponent},
     {path:'cart',component:MycartComponent},
 
-
-
-  ]
+  ],
+  
 
 
 
   
 },
+{path:"contactus",component:ContactUsComponent},
   { path: 'admin/:username', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),canActivate :[AdminGuard] },
 
   {path:'',redirectTo:'/home',pathMatch:'full'},

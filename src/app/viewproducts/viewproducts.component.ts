@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin/admin.service';
 import { UserService } from '../user.service';
+import { FilterPipe } from '../pipe-folder/filter.pipe';
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
@@ -11,6 +12,9 @@ export class ViewproductsComponent implements OnInit {
   constructor(private as:AdminService,private us:UserService) { }
 products=[]
 currentUser;
+
+searchKey:string="";
+
   ngOnInit(): void {
     
     this.getdata();

@@ -1,5 +1,5 @@
 .property1{
-    font-size:50px;
+  font-size:50px;
     font-family: Dancing Script, 'cursive';
     position:relative;
     top:200px;
@@ -7,6 +7,6 @@
 }
 .property2{
     position:relative;
-    top:150px;
+    top:200px;
     left:100px;
 }
