@@ -17,4 +17,23 @@ export class AdminService {
   deleteproductfromlist(productObject):Observable<any>{
     return this.hc.post("/product/delete-from-list",productObject)
   }
+  getcategoriesdata():Observable<any>{
+    return this.hc.get("/product/getcategories");
+  }
+  
+
+
+
+
+  getproductdetails(model):Observable<any>{
+    //console.log(model)
+    return this.hc.get(`/product/getdetailsofproduct/${model}`)
+  }
+
+
+
+  updateproduct(productobject):Observable<any>{
+    //console.log("in admin",productobject)
+    return this.hc.post("/product/updateproduct",productobject)
+  }
 }

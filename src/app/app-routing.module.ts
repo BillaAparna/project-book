@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './register/register.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
+import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ViewproductsComponent } from './viewproducts/viewproducts.component';
 const routes: Routes = [
@@ -20,12 +22,15 @@ const routes: Routes = [
     {path:'cart',component:MycartComponent},
 
   ],
-  
+
 
 
 
   
 },
+{path:"updateproduct/:model",component:UpdateproductComponent},
+
+{path:"thank_you",component:ThankYouComponent},
 {path:"contactus",component:ContactUsComponent},
   { path: 'admin/:username', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),canActivate :[AdminGuard] },
 

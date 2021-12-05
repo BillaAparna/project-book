@@ -5,13 +5,29 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(mobiles: any[],searchItem:string): any[] {
-    if(!mobiles|| !searchItem){
-      return mobiles;
+  transform(value:any,filteredString:Object) {
+    if(value.length===0 || (filteredString["category"]==='' && filteredString["productname"]==='')){
+      return  value;
     }
-    else{
-      return mobiles.filter(mobileObj=>mobileObj.productTitle.toLowerCase().indexOf(searchItem.toLowerCase())!==-1)
+    if(filteredString["category"]===''){
+      return value;
     }
+    const users=[];
+    if(filteredString["searchitem"]===''){
+      for(const user of value){
+        if(user["category"]===filteredString["category"]){
+          users.push(user)
+        }
+      }
+      return users;
+    }
+    
+    for(const user of value){
+      if(user["productname"]===filteredString["searchitem"] && user["category"]===filteredString["category"]){
+        users.push(user)
+      }
+    }
+    return users;
   }
-
+  
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Router } from '@angular/router';
+import {NgForm} from "@angular/forms"
 @Component({
   selector: 'app-add-products',
   templateUrl: './add-products.component.html',
@@ -11,12 +12,23 @@ export class AddProductsComponent implements OnInit {
   constructor(private as:AdminService,private router:Router) { }
 
   ngOnInit(): void {
+    
   }
   file:File;//file of typeFile
+  public listItems:Array<string>=[];
   selectfile(event){
     this.file=event.target.files[0]; 
-    console.log(this.file)
+    //console.log(this.file)
   }
+  
+  categories:Array<any>=[{id:1,name:"Myth"},{id:2,name:"Novel"},
+  {id:3,name:"Fiction"},{id:4,name:"Fairy-tale"},
+  {id:5,name:"Drama"},{id:6,name:"History"},
+  {id:7,name:"Western"},{id:8,name:"Poems"},
+  {id:9,name:"Non-Fiction"}]
+  public categoryName:null;
+
+
   onAddProduct(ref){
   
     let productObj=ref.value;

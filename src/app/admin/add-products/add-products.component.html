@@ -5,6 +5,7 @@
             ngModel>
         <label for="productname">productname</label>
     </div>
+    
     <div class="form-floating mb-3">
         <input type="text" class="form-control" id="model" placeholder="model" name="model" ngModel>
         <label for="model">model</label>
@@ -13,12 +14,21 @@
         <input type="number" class="form-control" id="price" placeholder="price" name="price" ngModel>
         <label for="price">price </label>
     </div>
-<div class="form-floating mb-3">
-        <textarea type="text" class="form-control" id="desc" placeholder="description" name="description" ngModel></textarea>
-        <label for="desc">description</label>
+    <div class="form-floating mb-3">
+        
+        <select name="category" id="categories" class="form-select" [(ngModel)]="categoryName">
+           <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
+
+           </option>
+          </select>
+          <label for="categories">select category of the book</label>
+         
+          
     </div>
+        
     <div class="form-floating mb-3">
         <input type="file" class="form-control" id="photo" name="photo" ngModel (change)="selectfile($event)" >
     </div>
+
     <button class="btn btn-success" type="submit">Add</button>
 </form>

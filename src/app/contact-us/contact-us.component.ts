@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -8,11 +9,26 @@ import { Router } from '@angular/router';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private us:UserService) { }
 
   ngOnInit(): void {
   }
-  onLogin(ref){
-    this.router.navigateByUrl("/home")
+  onLoginto(ref){
+
+    let contactObj=ref.value;
+   // console.log(loginObj);
+    this.us.contactus(contactObj).subscribe(
+      res=>{
+        if(res.message=="success"){
+          this.router.navigateByUrl("/thank_you");
+        }
+        },
+      err=>{
+        console.log(err);
+        alert("something went wrong in contact form ")
+      })
+    //console.log(loginObj);
+    
+  
   }
 }

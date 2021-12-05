@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +13,11 @@ import { AuthorizationService } from './authorization.service';
 import { SharedModule } from './shared/shared.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
     PagenotfoundComponent,
      ContactUsComponent,
+     ThankYouComponent,
+     UpdateproductComponent,
     
   
   ],
@@ -33,7 +40,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     AppRoutingModule,
     FormsModule ,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [
     {

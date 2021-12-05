@@ -1,0 +1,32 @@
+<p class="display-4 text-center m-5">Update Product</p>
+<form  #ref ="ngForm" (ngSubmit)="onUpdateProduct(ref)" class="w-75 mx-auto mt-5">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="productname" placeholder="productname" name="productname" value=newproductObject.productname
+        [(ngModel)]="newproductObject.productname">
+        <label for="productname">productname</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="model" placeholder="model" name="model"   disabled [(ngModel)]="newproductObject.model">
+        <label for="model">model</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="price" placeholder="price" name="price" [(ngModel)]="newproductObject.price">
+        <label for="price">price </label>
+    </div>
+    <div class="form-floating mb-3">
+        
+        <select name="category" id="categories" class="form-select" disabled [(ngModel)]="categories[newproductObject.category-1]">
+           <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
+
+           </option>
+          </select>
+          <label for="categories">you don't have access to change category</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input type="file" class="form-control" id="photo" disabled name="photo" ngModel (change)="selectfile($event)">
+    </div>
+
+
+    <button class="btn btn-success" type="submit">Update</button>
+</form>

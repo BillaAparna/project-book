@@ -25,7 +25,9 @@ export class UserService {
 
 
 
-
+  contactus(contactObj):Observable<any>{
+    return this.hc.post("/user/addcontactqueries",contactObj);
+  }
 
 
 

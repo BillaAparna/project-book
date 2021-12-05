@@ -441,7 +441,14 @@ userApi.get("/getproducts/:username",expressErrorHandler(async(req,res,next)=>{
 
 
 
+userApi.post("/addcontactqueries",expressErrorHandler(async(req,res,next)=>{
+    let contactCollectionObj=req.app.get("contactCollectionObj")
+    let contactform=req.body;
+    console.log(contactform)
+    await contactCollectionObj.insertOne(contactform)
+    res.send({message:"success"})
 
+}))
 
 
 

@@ -36,12 +36,39 @@ productApi.get('/getprodcuts',expressErrorHandler(async(req,res,next)=>{
 productApi.post("/delete-from-list",expressErrorHandler(async(req,res,next)=>{
     let productCollectionObj = req.app.get("productCollectionObj");
     let newproduct=req.body.model
+    //console.log(type(newproduct))
     let result= await productCollectionObj.deleteOne({model:newproduct});
     let latestcartobj=await productCollectionObj.findOne({model:newproduct})
-    console.log(latestcartobj)
+    //console.log(latestcartobj)
     res.send({message: "producted deleted "})
     
 }))
+
+productApi.get("/getcategories",expressErrorHandler(async(req,res,next)=>{
+    let categoryCollectionObj=req.app.get("categoryCollectionObj");
+    let categories=await categoryCollectionObj.findOne();
+    res.send({message:categories.category});
+}))
+
+productApi.get("/getdetailsofproduct/:model",expressErrorHandler(async(req,res,next)=>{
+    let productCollectionObj = req.app.get("productCollectionObj");
+    let newModel=req.params.model
+    console.log("model is",newModel)
+let result=await productCollectionObj.findOne({model:newModel});
+//console.log(result)
+    res.send({message:result})
+}))
+
+
+productApi.post("/updateproduct",expressErrorHandler(async(req,res,next)=>{
+    let productCollectionObj = req.app.get("productCollectionObj");
+    let newproduct=req.body;
+    console.log("new product is",newproduct)
+    await productCollectionObj.updateOne({model:newproduct.model},{$set:{...newproduct}});
+    res.send({message:"product updated"})
+}))
+
+
 
 
 module.exports=productApi
