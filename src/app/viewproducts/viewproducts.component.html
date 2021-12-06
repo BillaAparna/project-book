@@ -6,13 +6,13 @@
   
   <form class="row mt-3 mb-3 "   #ref ="ngForm" (ngSubmit)="onSearchProduct(ref)" >
    
-    <select class="col-5 pd-2" id="category" name="category"   placeholder="select category" ngModel >
+    <select class="col-5 pd-2 rounded-3" id="category" name="category"   placeholder="select category" ngModel >
       <option value="" disabled selected hidden>select category</option>
 
         <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
         </option>
     </select>
-    <input type="text" id="search" name="searchitem"   class="col-5 pd-2"  placeholder="Select by product name............." ngModel>
+    <input type="text" id="search" name="searchitem"   class="col-5 pd-2 rounded-3"  placeholder="Select by product name............." ngModel>
     <button type="submit" class=" btn-sm btn-success col-1"><i class="fas fa-search"></i></button>
 
     <button type="reset" class=" btn-sm   btn-primary col-1" (click)="reset()" >reset</button>
@@ -27,7 +27,7 @@
   
   
   
-  
+<!--   
   
   
   
@@ -45,8 +45,8 @@
   
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     <div class="col" *ngFor="let product of products  | search :searchObject   ">
-        <div class="card h-100 w-80 text-center mt-2 shadow-lg">
-            <img src={{product.productImage}} class="card-img-top text-center" width="100px"  height="200px" alt="...">
+        <div class="card h-100 w-80 text-center mt-2 shadow-lg text-center">
+            <img src={{product.productImage}} class="card-img-top text-center"  height="200px" width="150x" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{product.productname}}</h5>
                 <p class="card-text">&#x20b9;{{product.price}}</p>
@@ -59,4 +59,25 @@
              </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<div class="body">
+  <div class="container1">
+      <div class="card mt-2 mb-2" *ngFor="let product of products  | search :searchObject   ">
+          <div class="product-image mt-2">
+              <img src={{product.productImage}} height="250px" width="150px" alt="" >
+          </div>
+          <div class="product-info">
+              <h6>{{product.productname}}</h6>
+              <h6>&#x20b9;{{product.price}}</h6>
+          </div>
+          <div style="display: flex; justify-content: safe center; ">
+                <button  *ngIf="currentUser!='admin'" (click)="onProductSelect(product)"><i class="fas fa-cart-plus" style="font-size:30px; color:rgb(10,2,116);cursor:pointer"></i></button>
+                <button *ngIf="currentUser=='admin'"(click)="onProductdelete(product)">  <i class="far fa-trash-alt" style="font-size:30px;color:red;cursor:pointer"></i></button>
+                <button *ngIf="currentUser=='admin'"(click)="edit(product)">  <i class="fas fa-pen-square" style="font-size:30px; color:rgb(10,2,116);cursor:pointer"></i></button>
+          </div>
+  
+
+      </div>
+      </div>
+  </div>

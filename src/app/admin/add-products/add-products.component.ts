@@ -21,7 +21,7 @@ export class AddProductsComponent implements OnInit {
     //console.log(this.file)
   }
   
-  categories:Array<any>=[{id:1,name:"Myth"},{id:2,name:"Novel"},
+  categories:Array<any>=[{id:1,name:"Philosophy and religious"},{id:2,name:"Novel"},
   {id:3,name:"Fiction"},{id:4,name:"Fairy-tale"},
   {id:5,name:"Drama"},{id:6,name:"History"},
   {id:7,name:"Western"},{id:8,name:"Poems"},
