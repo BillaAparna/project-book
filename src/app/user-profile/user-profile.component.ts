@@ -13,6 +13,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private hc:HttpClient,private us:UserService,private router:Router) { }
   userObj;
   count;
+  countOrders;
   ngOnInit(): void {
     //this.router.navigateByUrl("/viewproducts")
     this.userObj=JSON.parse(localStorage.getItem("userObj")); 
@@ -37,6 +38,16 @@ export class UserProfileComponent implements OnInit {
           }
         }
       )})
+
+      this.us.getuserorders(this.userObj.username).subscribe(res=>{
+        if(res.message==="no-order"){
+          this.us.updatedataObservableOrder(0);
+        }
+        else{
+          this.us.updatedataObservableOrder(res.message);
+          
+        }
+      })
     
 
 

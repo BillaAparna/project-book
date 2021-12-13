@@ -457,6 +457,57 @@ userApi.post("/addcontactqueries",expressErrorHandler(async(req,res,next)=>{
 
 
 
+userApi.get("/delete-cart/:username",expressErrorHandler(async(req,res,next)=>{
+    let userCartCollectionObj=req.app.get("userCartCollectionObj")
+    let un=req.params.username
+    await userCartCollectionObj.deleteOne({username:un})
+
+}))
+
+userApi.post("/addtouserOrderList",expressErrorHandler(async(req,res,next)=>{
+    let userOrderCollectionObj=req.app.get("userOrderCollectionObj")
+    let productobj=req.body
+    console.log(productobj)
+    let userorderobj=await userOrderCollectionObj.findOne({username:productobj.username});
+    if(userorderobj==null){
+        let orders=[]
+        orders.push({Date:productobj.Date,products:productobj.Products,TotalPrice:productobj.TotalPrice})
+        let newproduct={username:productobj.username,orders}
+        //console.log(newproduct)
+        await userOrderCollectionObj.insertOne(newproduct)
+    }
+    else{
+        userorderobj.orders.push({Date:productobj.Date,products:productobj.Products,TotalPrice:productobj.TotalPrice})
+        await userOrderCollectionObj.updateOne({username:productobj.username},{$set:{...userorderobj}})
+        let latestorderobj=await userOrderCollectionObj.findOne({username:productobj.username})
+        res.send({message:"view your order in myorders",latestorderobj:latestorderobj})
+    }
+}))
+
+
+
+
+
+userApi.get("/getorders/:username",expressErrorHandler(async(req,res,next)=>{
+    let userOrderCollectionObj=req.app.get("userOrderCollectionObj")
+    let un=req.params.username
+    let orders=await userOrderCollectionObj.findOne({username:un})
+    //console.log(products)
+    if(orders===null){
+        res.send({message:"no-orders"})
+    }
+    else{
+    res.send({message:orders})
+    }
+}))
+
+
+
+
+
+
+
+
 
 
 

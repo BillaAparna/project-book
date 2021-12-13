@@ -6,21 +6,25 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MycartComponent } from './mycart/mycart.component';
+import { MyordersComponent } from './myorders/myorders.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './register/register.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserordersComponent } from './userorders/userorders.component';
 import { ViewproductsComponent } from './viewproducts/viewproducts.component';
 const routes: Routes = [
   {path:"home",component:HomeComponent},
   {path:"login",component:LoginComponent},
+  
   {path:"register",component:RegisterComponent},
   {path:"cart",component:MycartComponent},
   {path:"userprofile/:username",component:UserProfileComponent,children:[
     {path:'viewproducts',component:ViewproductsComponent},
     {path:'cart',component:MycartComponent},
-
+    {path:'orders',component:UserordersComponent}
+    
   ],
 
 

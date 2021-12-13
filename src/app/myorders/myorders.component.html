@@ -1,0 +1,42 @@
+
+<div *ngIf="len(orders)">
+    <table class="table table-success table-striped mx-auto mt-5">
+        <thead >
+            <th>Date</th>
+            <th>items</th>
+            <th>Shipping Details</th>
+            <th>TotalPrice</th>
+        </thead>
+        <tr *ngFor="let v of orders" class="mb-2">
+            <td>{{v["date"]}}</td>
+            <td >
+
+                <div *ngFor="let details of v.orderedproducts;let i = index">
+                <p>{{i+1}} )  {{details["item"]}} ,(no_of_items:
+                    {{details["no_of_items"]}}) ,(price: 
+                    &#x20b9;{{details["totalprice"]}})</p>
+                    </div>
+            </td>
+            <td>
+                <p>{{v["CompleteAddress"].username}}<br>
+                    {{v["CompleteAddress"].mobilenumber}}<br>
+                    Address: {{v["CompleteAddress"].address}} , {{v["CompleteAddress"].city}}, {{v["CompleteAddress"].state}}, {{v["CompleteAddress"].zip}}
+                    
+                </p>
+            </td>
+            <td>
+                &#x20b9;{{v["TotalPrice"]}}
+            </td>
+            
+            
+            <!-- <button class=" delete_product btn btn-danger " (click)="onProductdeletefromCart(product)"><i class="far fa-trash-alt"> Delete</i></button> -->
+        </tr>
+        
+    
+    </table>
+    </div>
+
+
+    <div *ngIf="!len(orders)" class="text-center ">
+       <h1> you have no orders</h1>
+    </div>

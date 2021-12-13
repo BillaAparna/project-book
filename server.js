@@ -44,11 +44,16 @@ mc.connect(databaseUrl, {useNewUrlParser: true, useUnifiedTopology: true }, (err
         let userCartCollectionObj=databaseObj.collection("usercartcollection")
         let contactCollectionObj=databaseObj.collection("contactcollection")
         let categoryCollectionObj=databaseObj.collection("categorycollection")
+        let orderCollectionObj=databaseObj.collection("ordercollection")
+        let userOrderCollectionObj=databaseObj.collection("userordercollection")
         app.set("userCollectionObj",userCollectionObj)
         app.set("productCollectionObj",productCollectionObj)
         app.set("contactCollectionObj",contactCollectionObj)
         app.set("userCartCollectionObj",userCartCollectionObj)
         app.set("categoryCollectionObj",categoryCollectionObj)
+        app.set("orderCollectionObj",orderCollectionObj)
+        app.set("userOrderCollectionObj",userOrderCollectionObj)
+
         console.log("connected to database")
 
     }

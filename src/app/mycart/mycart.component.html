@@ -1,4 +1,4 @@
-<div *ngIf="totalsum(products)">
+<div *ngIf="count">
 <table class="table text-center mx-auto mt-5">
     <thead>
         <th>productname</th>
@@ -10,13 +10,13 @@
     <tr *ngFor=" let product of products" class="mb-2">
         <td>{{product.productname}}</td>
         <td>{{product.model}}</td>
-        <td>{{product.price}}</td>
+        <td>&#x20b9;{{product.price}}</td>
         <td><img src={{product.productImage}} width="100px" alt="image">
             <button class="btn btn-sm  bg-success " (click)="increaseCount(product)"><i class="fas fa-plus-square"></i></button>   {{product.count}}
             <button class="btn btn-sm bg-danger" (click)="decreaseCount(product)" >  <i class="fas fa-minus-square"></i></button>
         </td>
-        <td >{{total(product.count,product.price)}}</td>
-            
+        <td >&#x20b9;{{total(product.count,product.price)}}</td>
+        
         
         <!-- <button class=" delete_product btn btn-danger " (click)="onProductdeletefromCart(product)"><i class="far fa-trash-alt"> Delete</i></button> -->
     </tr>
@@ -24,12 +24,101 @@
 
 </table>
 <hr>
-<div class="text-center">Total Sum:  {{totalsum(products)}}</div><br>
-<div class="text-center"><button class="btn btn-primary">pay</button></div>
+<div class="text-center">Total Sum: &#x20b9; {{totalsum(products)}}</div><br>
+<div class="text-center"><button class="btn btn-primary"  data-bs-target="#data" data-bs-toggle="modal">Order</button></div>
 </div>
-<div *ngIf="totalsum(products)==0" class=" text-primary text-center display-4 mx-auto mt-5 ">
+<div *ngIf="!count" class=" text-primary text-center display-4 mx-auto mt-5 ">
     oops....your cart is empty 
     <br>
     add products and enjoy shopping
     <img src="https://png.pngtree.com/png-vector/20210805/ourlarge/pngtree-enjoy-shopping-png-image_3780782.jpg"   alt="">
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="modal fade" id="data" data-bs-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        Order 
+                        Date:{{currentdate}}
+                        <button class="btn btn-danger" #closebutton data-bs-dismiss="modal">x</button>
+                    </div>
+                    <div class="modal-body">
+                        <form #ref="ngForm" (ngSubmit)="ref.form.valid&&OnOrder(ref) ">
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputname">Name</label>
+                                <input type="text" class="form-control" id="inputname" placeholder="Enter name" name="username" required ngModel #refusername="ngModel">
+                                <p class="text-warning" *ngIf="(ref.submitted||refusername.touched)&&refusername.errors?.required">*
+                                    Username is required
+                                </p>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="phonenumber">Phone Number</label>
+                                <input type="tel" class="form-control" id="phonenumber" placeholder="telepone number" name="phonenumber" required minlength="10" maxlength="10"   ngModel  #refphonenumber="ngModel">
+                                <p class="text-warning" *ngIf="(ref.submitted||refphonenumber.touched)&&refphonenumber.errors?.minlength">*
+                                    invalid phone number
+                                </p>
+                                <p class="text-warning" *ngIf="(ref.submitted||refphonenumber.touched)&&refphonenumber.errors?.maxlength">*
+                                    invalid phone number
+                                </p>
+                            </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState">State</label>
+                                <input type="text" class="form-control" id="inputState" name="state" required #refstate="ngModel" ngModel >
+                                <p class="text-warning" *ngIf="(ref.submitted||refstate.touched)&&refstate.errors?.required">*
+                                    required
+                                </p>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputCity">City</label>
+                                  <input type="text" class="form-control" id="inputCity" name="city" required #refcity="ngModel" ngModel>
+                                  <p class="text-warning" *ngIf="(ref.submitted||refcity.touched)&&refcity.errors?.required">*
+                                    required
+                                </p>
+                                </div>
+                            <div class="form-group">
+                              <label for="inputAddress">Address</label>
+                              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required #refaddress="ngModel" ngModel>
+                              <p class="text-warning" *ngIf="(ref.submitted||refaddress.touched)&&refaddress.errors?.required">*
+                                required
+                            </p>
+                            </div>
+                            
+                              
+                              <div class="form-group col-md-2">
+                                <label for="inputZip">Zip</label>
+                                <input type="text" class="form-control" id="inputZip" name="zip" #refzip="ngModel" required ngModel>
+                                <p class="text-warning" *ngIf="(ref.submitted||refzip.touched)&&refzip.errors?.required">*
+                                    required
+                                </p>
+                              </div>
+                            
+                            </div>
+                           Note:Cash On delivery only avaialble
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success" >Place order</button>
+                            </div>
+                        
+                          </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>

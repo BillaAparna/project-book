@@ -69,6 +69,19 @@ productApi.post("/updateproduct",expressErrorHandler(async(req,res,next)=>{
 }))
 
 
+productApi.post("/add-to-orders",expressErrorHandler(async(req,res,next)=>{
+    let orderCollectionObj=req.app.get("orderCollectionObj")
+    let product=req.body;
+//console.log(product)
+    await orderCollectionObj.insertOne(product);
 
+}))
+productApi.get("/getorders",expressErrorHandler(async(req,res,next)=>{
+    let orderCollectionObj=req.app.get("orderCollectionObj")
+    let orders=await orderCollectionObj.find().toArray();
+    //console.log(orders)
+    res.send({message:orders});
+
+}))
 
 module.exports=productApi

@@ -30,7 +30,7 @@ categories:Array<any>=[{id:1,name:"Philosophy and religious"},{id:2,name:"Novel"
   {id:5,name:"Drama"},{id:6,name:"History"},
   {id:7,name:"Western"},{id:8,name:"Poems"},
   {id:9,name:"Non-Fiction"}]
-public categoryName:null;
+public categoryName:'';
 searchObject={category:'',searchitem:''};
   ngOnInit(): void {
 
@@ -111,8 +111,7 @@ searchObject={category:'',searchitem:''};
     console.log(this.searchObject)
   }
 
-
-
+ 
 
 
 

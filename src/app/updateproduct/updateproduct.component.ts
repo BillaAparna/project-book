@@ -70,7 +70,8 @@ onUpdateProduct(ref){
 
     this.as.updateproduct(this.productobject).subscribe(res=>{
         alert("product updated successfully")
-       // this.router.navigateByUrl("/viewproducts")
+  
+        //this.router.navigateByUrl("/addproducts")
     },err=>{
 
     })

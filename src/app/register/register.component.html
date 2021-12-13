@@ -2,13 +2,16 @@
 <form  #ref ="ngForm" (ngSubmit)="ref.form.valid && onRegister(ref)" class="w-75 mx-auto mt-5">
     <div class="form-floating mb-3">
         <input type="username" class="form-control" id="username" placeholder="name@example.com" name="username"
-        ngModel required minlength="6" #refusername="ngModel" >
+        ngModel required minlength="6"  maxlength="25" #refusername="ngModel" >
         <label for="username">Username</label>
         <p class="text-warning" *ngIf="(ref.submitted||refusername.touched)&&refusername.errors?.required">*
             Username is required
         </p>
         <p class="text-warning" *ngIf="(ref.submitted||refusername.touched)&&refusername.errors?.minlength">*
             Minlength should be 6
+        </p>
+        <p class="text-warning" *ngIf="(ref.submitted||refusername.touched)&&refusername.errors?.maxlength">*
+            Maxlength should be 25
         </p>
     </div>
     <div class="form-floating mb-3">
@@ -17,6 +20,7 @@
         <p class="text-warning" *ngIf="(ref.submitted||refpassword.touched)&&refpassword.errors?.required">*
             password is required
           </p>
+          
     </div>
     <div class="form-floating mb-3">
         <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" ngModel required  #refemail="ngModel">

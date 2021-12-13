@@ -1,0 +1,29 @@
+<div *ngIf ="countOrders "class="container mt-4 ">
+    <div class="accordion" id="acrd">
+        <div class="accordion-item" *ngFor="let v of sortData">
+            <div class="accordion-header">
+                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#cone"  >Order Date: {{v.Date}} </button>
+            </div>
+            
+            <div class="accordion-collapse collapse" id="cone" data-bs-parent="#acrd">
+                <div class="accordion-body">
+                    <div *ngFor="let details of v.products;let i = index">
+                        <p>{{i+1}} )  {{details["item"]}} ,(no_of_items:
+                            {{details["no_of_items"]}}) ,(price: 
+                            &#x20b9;{{details["totalprice"]}})</p>
+                    </div>
+                    <div class="text-warning">TotalPrice : {{v.TotalPrice}}</div>
+                </div>
+                
+            </div>
+        </div>
+    
+    
+    
+    
+    </div>
+</div>
+<div *ngIf="!countOrders">
+    <h1>No Orders</h1>
+
+</div>

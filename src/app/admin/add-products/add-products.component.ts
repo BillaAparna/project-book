@@ -27,11 +27,16 @@ export class AddProductsComponent implements OnInit {
   {id:7,name:"Western"},{id:8,name:"Poems"},
   {id:9,name:"Non-Fiction"}]
   public categoryName:null;
+getprice(p,d){
+  let s= (p*(100-d))/100;
 
+    return Math.floor(s)
+}
 
   onAddProduct(ref){
   
     let productObj=ref.value;
+    productObj.price=this.getprice(productObj.actualprice,productObj.discount);
     //console.log(productObj);
     let formData=new FormData();
     //add file

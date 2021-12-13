@@ -18,6 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
+import { MyordersComponent } from './myorders/myorders.component';
+import { UserordersComponent } from './userorders/userorders.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { UpdateproductComponent } from './updateproduct/updateproduct.component'
      ContactUsComponent,
      ThankYouComponent,
      UpdateproductComponent,
+     MyordersComponent,
+     UserordersComponent,
     
   
   ],

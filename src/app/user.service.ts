@@ -18,11 +18,16 @@ export class UserService {
   dataSource=new BehaviorSubject<any>(0)
 
   dataObservable=this.dataSource.asObservable();
+  
+  dataSourceOrder=new BehaviorSubject<any>(0)
+  dataObservableOrder=this.dataSourceOrder.asObservable();
 
   updateDataObservable(data){
     this.dataSource.next(data)
   }
-
+  updatedataObservableOrder(data){
+    this.dataSourceOrder.next(data)
+  }
 
 
   contactus(contactObj):Observable<any>{
@@ -66,5 +71,15 @@ export class UserService {
   }
   deletefromrange(newUserProductObj):Observable<any>{
     return this.hc.post("/user/delete-from-range",newUserProductObj)
+  }
+  deletecart(username):Observable<any>{
+    //console.log(username)
+    return this.hc.get(`/user/delete-cart/${username}`)
+  }
+  addtouserOrderList(orderObject):Observable<any>{
+    return this.hc.post("/user/addtouserOrderList",orderObject)
+  }
+  getuserorders(username):Observable<any>{
+    return this.hc.get(`/user/getorders/${username}`)
   }
 }

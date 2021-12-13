@@ -36,4 +36,11 @@ export class AdminService {
     //console.log("in admin",productobject)
     return this.hc.post("/product/updateproduct",productobject)
   }
+  order(object):Observable<any>{
+    return this.hc.post("/product/add-to-orders",object)
+  }
+
+  getorders():Observable<any>{
+    return this.hc.get("/product/getorders")
+  }
 }
